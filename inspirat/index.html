@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grille</title>
+</head>
+<style>
+    table,
+    td {
+        border: 1px solid #789;
+        padding: 5px;
+    }
+
+    td {
+        width: 28px;
+        height: 28px;
+    }
+
+    .mur {
+        background-color: #005;
+    }
+
+    .bonus {
+        background-color: #E55;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        /* added line */
+        border: 0;
+    }
+
+    #perso, #loup {
+        width:25px;
+    }
+</style>
+
+<body>
+    <div>
+        <label for="effets">Effets sonoroes</label><input type="checkbox" id="effets">&nbsp;
+        <label for="vocale">Synthèse vocale</label><input type="checkbox" id="vocale">&nbsp;
+        <label for="visuloup">Visualisation du loup</label><input type="checkbox" id="visuloup" onchange="toggleLoup()">
+    </div>
+    <!-- Les attributs personnalisés doivent commencer par "data-" -->    
+</body>
+<script src="code.js"></script>
+
+</html>
