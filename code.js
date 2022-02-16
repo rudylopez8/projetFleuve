@@ -1,6 +1,5 @@
 //le body
 let body = document.querySelector("body");
-
 //synthese vocale
 let synth = window.speechSynthesis;
 
@@ -13,8 +12,8 @@ const NBCOLONNE = 16;
 
 //déclaration des variables globales
 let perso;
-let level=level1;
-let unité=1;
+let level = level1;
+let unité = 1;
 
 grille = document.getElementById("grille");
 
@@ -122,14 +121,15 @@ function clavier(event) {
     // si la cellule destination n'est pas un arbre alors déplacement de perso en x,y
     //si perso en ligne 7 et colone 15 charger level2
     if ((parseInt(perso.dataset.colonne)) == 15 && (parseInt(perso.dataset.ligne)) == 7) {
-        chargerNiveau(level+unité);
+       level= level2;
+        chargerNiveau(level);
     }
     else if (isWall(grille.rows[y].cells[x])) {
-    //si la cellule destination est un arbre alors effet sonore        
-    if (effets.checked) {
-    audio.src = "arbre.mp3";
-    audio.play();
-    }
+        //si la cellule destination est un arbre alors effet sonore        
+        if (effets.checked) {
+            audio.src = "arbre.mp3";
+            audio.play();
+        }
     }
     //si la cellule destination est de type fleuve alors effet sonore
     else if (isFleuve(grille.rows[y].cells[x])) {
@@ -138,12 +138,12 @@ function clavier(event) {
             audio.src = "fleuve.wav";
             audio.play();
         }
-    } else {        
-    deplacerObjet(perso, x, y);
-if (effets.checked) {
-    audio.src = "pas.mp3";
-    audio.play();
-    }
+    } else {
+        deplacerObjet(perso, x, y);
+        if (effets.checked) {
+            audio.src = "pas.mp3";
+            audio.play();
+        }
     }
 }
 
@@ -171,6 +171,9 @@ function isFleuve(obj) {
  */
 function isXYwall(x, y) {
     return isWall(grille.rows[y].cells[x]);
+}
+function isXYfleure(x, y) {
+    return isFleuve(grille.rows[y].cells[x]);
 }
 
 /**
